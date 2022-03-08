@@ -1,39 +1,37 @@
 import { Stash } from "@cipherstash/stashjs"
-import { employeeSchema } from "./example-schema"
+import { movieSchema } from "./example-schema"
 
 async function insertRecords() {
   try {
-    const stash = await Stash.connect(Stash.loadConfigFromEnv())
-    const employees = await stash.loadCollection(employeeSchema)
-    console.log(`Collection "${employees.name}" loaded`)
+    const stash = await Stash.connect()
+    const movies = await stash.loadCollection(movieSchema)
+    console.log(`Collection "${movies.name}" loaded`)
 
-    await employees.put({
-      name: "Ada Lovelace",
-      jobTitle: "Chief Executive Officer (CEO)",
-      dateOfBirth: new Date(1852, 11, 27),
-      email: "ada@security4u.example",
-      grossSalary: 250000n
+    let id1 = await movies.put({
+      title: "The Matrix",
+      year: 1999,
+      runningTime: 136
     })
 
-    await employees.put({
-      name: "Grace Hopper",
-      jobTitle: "Chief Science Officer (CSO)",
-      dateOfBirth: new Date(1906, 12, 9),
-      email: "grace@security4u.example",
-      grossSalary: 250000n
+      /*let id2 = await movies.put({
+      title: "Star Wars",
+      year: 1977,
+      runningTime: 121
     })
 
-    await employees.put({
-      name: "Joan Clark",
-      jobTitle: "Chief Information Security Officer (CISO)",
-      dateOfBirth: new Date(1917, 6, 24),
-      email: "joan@security4u.example",
-      grossSalary: 250000n
-    })
+    // With ID specified
+    let id3 = await movies.put({
+      id: "c3c8555c-d1e8-4275-9226-2d805077d5d8",
+      title: "Terminator 2: Judgement Day",
+      year: 1991,
+      runningTime: 137
+    })*/
 
-    console.log("Inserted 3 records")
-  } catch (err) {
-    console.error(`Could not insert records into collection! Reason: ${JSON.stringify(err)}`)
+    console.log('GET', await movies.get(id1))
+    //console.log('GET ALL', await movies.getAll([id1, id2, id3]))
+  } catch(err) {
+    console.log(err)
+    console.error(`Could not insert record into collection! Reason: ${JSON.stringify(err)}`)
   }
 }
 
