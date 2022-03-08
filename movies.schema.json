@@ -1,0 +1,21 @@
+{
+  "type": {
+    "title": "string",
+    "runningTime": "number",
+    "year": "number"
+  },
+  "indexes": {
+    "exactTitle": { "kind": "exact", "field": "title" },
+    "runningTime": { "kind": "range", "field": "runningTime" },
+    "year": { "kind": "range", "field": "year" },
+    "title": {
+      "kind": "match",
+      "fields": ["title"],
+      "tokenFilters": [
+        { "kind": "downcase" },
+        { "kind": "ngram", "tokenLength": 3 }
+      ],
+      "tokenizer": { "kind": "standard" }
+    }
+  }
+}
