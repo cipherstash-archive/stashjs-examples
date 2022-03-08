@@ -1,27 +1,18 @@
-import { CollectionSchema, downcase, standard } from "@cipherstash/stashjs"
+import { CollectionSchema, downcase, ngram, standard } from "@cipherstash/stashjs"
 
-export type Employee = {
-  id: string,
-  name: string,
-  jobTitle: string,
-  dateOfBirth: Date,
-  email: string,
-  grossSalary: bigint
+export type Movie = {
+  id?: string,
+  title: string,
+  year: number,
+  runningTime: number
 }
 
-export const employeeSchema = CollectionSchema.define<Employee>("employees").indexedWith(mapping => ({
-  email: mapping.Exact("email"),
-  dateOfBirth: mapping.Range("dateOfBirth"),
-  jobTitle: mapping.Match(["jobTitle"], {
-    tokenFilters: [downcase],
+export const movieSchema = CollectionSchema.define<Movie>("movies").indexedWith(mapping => ({
+  exactTitle: mapping.Exact("title"),
+  title: mapping.Match(["title"], {
+    tokenFilters: [downcase, ngram({ tokenLength: 3 })],
     tokenizer: standard
   }),
-  allStringFields1: mapping.DynamicMatch({
-    tokenFilters: [downcase],
-    tokenizer: standard
-  }),
-  allStringFields2: mapping.FieldDynamicMatch({
-    tokenFilters: [downcase],
-    tokenizer: standard
-  })
+  year: mapping.Range("year"),
+  runningTime: mapping.Range("runningTime")
 }))
