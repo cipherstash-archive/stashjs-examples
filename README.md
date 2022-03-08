@@ -11,7 +11,7 @@ Example code that demonstrates how to use StashJS.
   npm install
   ```
 
-2. Have a CipherStash profile setup:
+2. Have a [CipherStash profile setup](https://docs.cipherstash.com/tutorials/getting-started/install-stash-cli.html):
 
   ```bash
   stash login --workspace <workspaceID>
