@@ -1,8 +1,7 @@
 {
   "name": "@cipherstash/stashjs-examples",
-  "version": "0.2.2",
-  "description": "Example client code for the CipherStash Typescript client",
-  "main": "index.js",
+  "version": "0.0.0",
+  "description": "Example client code for the CipherStash TypeScript/JavaScript client",
   "scripts": {
     "build": "pnpx tsc",
     "build-then-watch": "pnpm build && pnpx tsc --watch"
@@ -22,18 +21,16 @@
   },
   "homepage": "https://github.com/cipherstash/stashjs-examples#readme",
   "dependencies": {
-    "@cipherstash/stashjs": "workspace:*"
+	"@types/node": "16.0.1",
+    "@cipherstash/stashjs": "^0.3.0",
+	"faker": "^5.5.3",
+    "@types/faker": "^5.5.7",
+	"timer-node": "^5.0.5",
+	"uuid": "^8.3.2",
+	"@types/uuid": "^8.3.2",
+	"csv-parse": "^5.0.1"
   },
   "devDependencies": {
     "typescript": "^4.3.4"
-  },
-  "jest": {
-    "moduleFileExtensions": [
-      "js",
-      "ts",
-      "d.ts",
-      "json",
-      "node"
-    ]
   }
 }
