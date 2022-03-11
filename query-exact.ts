@@ -8,10 +8,10 @@ async function queryCollection() {
     const movies = await stash.loadCollection(movieSchema)
 
     let queryResult = await movies.query(
-      movie => movie.title.match("life"),
+      movie => movie.exactTitle.eq("Lifelines"),
       { limit: 10 }
     )
-    displayResults(queryResult, "Match: 'life'")
+    displayResults(queryResult, "Exact title: 'Lifelines'")
 
   } catch (err) {
     console.error(err)
