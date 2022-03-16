@@ -20,7 +20,7 @@ Example code that demonstrates how to use StashJS.
 3. Compile all the examples:
 
   ```bash
-  pnpm build
+  npm run build
   ```
 
 4. Run examples:
