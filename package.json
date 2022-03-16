@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "description": "Example client code for the CipherStash TypeScript/JavaScript client",
   "scripts": {
-    "build": "pnpx tsc",
-    "build-then-watch": "pnpm build && pnpx tsc --watch"
+    "build": "npx tsc",
+    "build-then-watch": "npm run build && npx tsc --watch"
   },
   "repository": {
     "type": "git",
