@@ -16,6 +16,20 @@
         { "kind": "ngram", "tokenLength": 3 }
       ],
       "tokenizer": { "kind": "standard" }
+    },
+    "allTextDynamicMatch": {
+      "kind": "dynamic-match",
+      "tokenFilters": [
+        { "kind": "downcase" }
+      ],
+      "tokenizer":  { "kind": "ngram", "tokenLength": 3 }
+    },
+    "allTextFieldDynamicMatch": {
+      "kind": "field-dynamic-match",
+      "tokenFilters": [
+        { "kind": "downcase" }
+      ],
+      "tokenizer":  { "kind": "ngram", "tokenLength": 3 }
     }
   }
 }
