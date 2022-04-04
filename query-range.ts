@@ -1,11 +1,11 @@
 import { Stash } from "@cipherstash/stashjs"
-import { movieSchema } from "./example-schema"
+import { Movie } from "./movie"
 import { displayResults } from "./query-helper"
 
 async function queryCollection() {
   try {
     const stash = await Stash.connect()
-    const movies = await stash.loadCollection(movieSchema)
+    const movies = await stash.loadCollection<Movie>("movies")
 
     let queryResult = await movies.query(movie => movie.year.lte(1920), {
       limit: 5,

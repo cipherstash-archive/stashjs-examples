@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "Example client code for the CipherStash TypeScript/JavaScript client",
   "scripts": {
-    "build": "npx tsc",
+    "build": "npx tsc && cp ./movies.schema.json ./dist/movies.schema.json",
     "build-then-watch": "npm run build && npx tsc --watch",
     "format": "prettier './*.ts' -w"
   },
@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/cipherstash/stashjs-examples#readme",
   "dependencies": {
-    "@cipherstash/stashjs": "^0.3.7",
+    "@cipherstash/stashjs": "^0.3.8",
     "@types/faker": "^5.5.7",
     "@types/node": "16.0.1",
     "@types/uuid": "^8.3.2",

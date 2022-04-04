@@ -1,5 +1,5 @@
 import { Stash } from "@cipherstash/stashjs"
-import { Movie, movieSchema } from "./example-schema"
+import { Movie } from "./movie"
 import * as uuid from "uuid"
 import * as faker from "faker"
 import { Timer } from "timer-node"
@@ -18,7 +18,7 @@ async function* fakeMovieGenerator(count: number): AsyncIterator<Movie> {
 async function insertRecords() {
   try {
     const stash = await Stash.connect()
-    const movies = await stash.loadCollection(movieSchema)
+    const movies = await stash.loadCollection<Movie>("movies")
     console.log(`Collection "${movies.name}" loaded`)
 
     const count = 10000
