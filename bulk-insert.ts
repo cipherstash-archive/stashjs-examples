@@ -1,7 +1,7 @@
 import { Stash } from "@cipherstash/stashjs"
 import { movieSchema } from "./example-schema"
-import { parse } from 'csv-parse'
-import fs from 'fs'
+import { parse } from "csv-parse"
+import fs from "fs"
 
 async function bulkInsert() {
   try {
@@ -9,26 +9,36 @@ async function bulkInsert() {
     const movies = await stash.loadCollection(movieSchema)
     console.log(`Collection "${movies.name}" loaded`)
 
-    const data = fs.readFileSync('titles.tsv', 'utf8')
+    const data = fs.readFileSync("titles.tsv", "utf8")
 
-    parse(data, {
-      delimiter: "\t"
-    }, async function(_err, records) {
-      for (let i = 0; i < records.length; i++) {
-        let movie = records[i]
-        let [title, year, runningTime] = [movie[2]!, parseInt(movie[5]!), parseInt(movie[7]!)]
-        if (!isNaN(year) && !isNaN(runningTime)) {
-          console.log(title)
-          await movies.put({
-            title: movie[2]!,
-            year: parseInt(movie[5]!),
-            runningTime: parseInt(movie[7]!)
-          })
+    parse(
+      data,
+      {
+        delimiter: "\t",
+      },
+      async function (_err, records) {
+        for (let i = 0; i < records.length; i++) {
+          let movie = records[i]
+          let [title, year, runningTime] = [
+            movie[2]!,
+            parseInt(movie[5]!),
+            parseInt(movie[7]!),
+          ]
+          if (!isNaN(year) && !isNaN(runningTime)) {
+            console.log(title)
+            await movies.put({
+              title: movie[2]!,
+              year: parseInt(movie[5]!),
+              runningTime: parseInt(movie[7]!),
+            })
+          }
         }
       }
-    })
+    )
   } catch (err) {
-    console.error(`Could not insert records into collection! Reason: ${JSON.stringify(err)}`)
+    console.error(
+      `Could not insert records into collection! Reason: ${JSON.stringify(err)}`
+    )
   }
 }
 

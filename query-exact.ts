@@ -1,6 +1,6 @@
 import { Stash } from "@cipherstash/stashjs"
-import { movieSchema } from "./example-schema";
-import { displayResults } from "./query-helper";
+import { movieSchema } from "./example-schema"
+import { displayResults } from "./query-helper"
 
 async function queryCollection() {
   try {
@@ -12,7 +12,6 @@ async function queryCollection() {
       { limit: 10 }
     )
     displayResults(queryResult, "Exact title: 'Lifelines'")
-
   } catch (err) {
     console.error(err)
     console.error(`Could not query collection! Reason: ${JSON.stringify(err)}`)

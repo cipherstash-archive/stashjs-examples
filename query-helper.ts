@@ -1,7 +1,10 @@
 import { HasID, QueryResult } from "@cipherstash/stashjs"
-import { Movie } from "./example-schema";
+import { Movie } from "./example-schema"
 
-export function displayResults(result: QueryResult<Movie & HasID>, name: string) {
+export function displayResults(
+  result: QueryResult<Movie & HasID>,
+  name: string
+) {
   result.documents.forEach((movie: Movie) => {
     console.log(movie)
   })
@@ -14,5 +17,3 @@ export function displayResults(result: QueryResult<Movie & HasID>, name: string)
   console.log(`Executed in ${result.took} secs`)
   console.log("--------------------------------------------------")
 }
-
-

@@ -10,10 +10,10 @@ async function insertRecords() {
     let id1 = await movies.put({
       title: "The Matrix",
       year: 1999,
-      runningTime: 136
+      runningTime: 136,
     })
 
-      /*let id2 = await movies.put({
+    /*let id2 = await movies.put({
       title: "Star Wars",
       year: 1977,
       runningTime: 121
@@ -27,11 +27,13 @@ async function insertRecords() {
       runningTime: 137
     })*/
 
-    console.log('GET', await movies.get(id1))
+    console.log("GET", await movies.get(id1))
     //console.log('GET ALL', await movies.getAll([id1, id2, id3]))
-  } catch(err) {
+  } catch (err) {
     console.log(err)
-    console.error(`Could not insert record into collection! Reason: ${JSON.stringify(err)}`)
+    console.error(
+      `Could not insert record into collection! Reason: ${JSON.stringify(err)}`
+    )
   }
 }
 
