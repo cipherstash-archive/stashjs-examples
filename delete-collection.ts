@@ -1,4 +1,4 @@
-import { Stash  } from "@cipherstash/stashjs"
+import { Stash } from "@cipherstash/stashjs"
 
 async function deleteCollection() {
   try {
