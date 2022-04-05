@@ -4,7 +4,8 @@
   "description": "Example client code for the CipherStash TypeScript/JavaScript client",
   "scripts": {
     "build": "npx tsc",
-    "build-then-watch": "npm run build && npx tsc --watch"
+    "build-then-watch": "npm run build && npx tsc --watch",
+    "format": "prettier './*.ts' -w"
   },
   "repository": {
     "type": "git",

@@ -3,17 +3,17 @@ import {
   downcase,
   ngram,
   standard,
-} from "@cipherstash/stashjs";
+} from "@cipherstash/stashjs"
 
 export type Movie = {
-  id?: string;
-  title: string;
-  year: number;
-  runningTime: number;
-};
+  id?: string
+  title: string
+  year: number
+  runningTime: number
+}
 
 export const movieSchema = CollectionSchema.define<Movie>("movies").indexedWith(
-  (mapping) => ({
+  mapping => ({
     exactTitle: mapping.Exact("title"),
     title: mapping.Match(["title"], {
       tokenFilters: [downcase, ngram({ tokenLength: 3 })],
@@ -30,4 +30,4 @@ export const movieSchema = CollectionSchema.define<Movie>("movies").indexedWith(
       tokenizer: ngram({ tokenLength: 3 }),
     }),
   })
-);
+)
