@@ -1,10 +1,10 @@
 import { Stash } from "@cipherstash/stashjs"
-import { movieSchema } from "./example-schema"
+import { Movie } from "./movie"
 
 async function deleteRecord() {
   try {
     const stash = await Stash.connect()
-    const employees = await stash.loadCollection(movieSchema)
+    const employees = await stash.loadCollection<Movie>("movies")
 
     let queryResult = await employees.query(movie =>
       movie.exactTitle.eq("The Matrix")

@@ -1,10 +1,10 @@
 import { Stash } from "@cipherstash/stashjs"
-import { movieSchema } from "./example-schema"
+import { Movie } from "./movie"
 
 async function insertRecords() {
   try {
     const stash = await Stash.connect()
-    const movies = await stash.loadCollection(movieSchema)
+    const movies = await stash.loadCollection<Movie>("movies")
     console.log(`Collection "${movies.name}" loaded`)
 
     let id1 = await movies.put({
