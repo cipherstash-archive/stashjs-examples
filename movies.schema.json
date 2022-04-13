@@ -1,8 +1,8 @@
 {
   "type": {
     "title": "string",
-    "runningTime": "number",
-    "year": "number"
+    "runningTime": "float64",
+    "year": "float64"
   },
   "indexes": {
     "exactTitle": { "kind": "exact", "field": "title" },
