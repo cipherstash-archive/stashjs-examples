@@ -1,3 +1,5 @@
+## This repo has moved to [cipherstash/cipherstash.js](https://github.com/cipherstash/cipherstash.js/tree/main/packages/stashjs-examples).
+
 # StashJS Examples
 
 Example code that demonstrates how to use StashJS.
